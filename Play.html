@@ -70,20 +70,20 @@
             border: 2px solid #ffd700;
         }
         .number-display {
-        font-size: 8rem;
-        margin: 2rem 0;
-        color: #ffd700;
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        border: 4px solid #ffd700;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        background: rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
+            font-size: 8rem;
+            margin: 2rem 0;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid #ffd700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
         .number-table {
             border-collapse: separate;
@@ -131,7 +131,6 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.2s ease;
             font-weight: bold;
         }
         .registration {
@@ -147,24 +146,6 @@
             border: 2px solid #ff0000;
             box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
             z-index: 200;
-        }
-        @media (max-width: 768px) {
-            .navbar {
-                gap: 1rem;
-            }
-            .number-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .number-display {
-            width: 150px;
-            height: 150px;
-            font-size: 6rem;
-            }
         }
         .insufficient-coins {
             display: none;
@@ -263,7 +244,7 @@
         <h2>Insufficient Coins! 💸</h2>
         <p>You have only <span id="current-coins">100</span> coins.<br>Login to get more!</p>
         <p>Click here to <a href="Login.html">Login</a></p>
-        <p>Don't have an account? Click here to <a href="Registration.html">Register</a></p>
+        <p>Don't have an account? Click here to <a href="Registration.html">Register</a></p>    
         <button onclick="closeInsufficientModal()">OK</button>
     </div>
     <script>
