@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            overflow: auto;
+            background: #1a1a1a;
+            background-image: url('https://i.pinimg.com/736x/3f/4d/de/3f4dde7fb508f8ba5f57d3b85ee8d0cf.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin: 2rem 0;
+            font-size: 3em;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .navbar {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar a:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        .content-box {
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            padding: 2rem 3rem;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            width: 600px;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h2 {
+            color: #ffd700;
+            font-size: 2em;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        p {
+            padding: 15px;
+            margin: 15px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        p:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>About</h1>
+    <nav class="navbar">
+        <a href="Login.html">Login</a>
+        <a href="Registration.html">Register</a>
+        <a href="Play.html">Play</a>
+        <a href="About.html">About</a>
+        <a href="Help.html">Help</a>
+    </nav>
+    <div class="content-box">
+        <h2>How to Play</h2>
+        <p>Choose a number between 0-9 and place your bet. The game uses a random number generator to determine the winning number. Lower numbers have higher multipliers!</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            background: #1a1a1a;
+            background-image: url('https://www.shutterstock.com/image-vector/beautiful-casino-background-design-web-600nw-2401392413.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .signup {
+            width: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        .signup p {
+            background-color: #ffd700;
+            padding: 1.5rem;
+            margin: 0;
+            color: #1a1a1a;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        .box {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border: 2px solid #ffd700;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            color: #ffd700;
+            text-align: right;
+            padding: 15px;
+            width: 40%;
+            white-space: nowrap;
+        }
+        td {
+            padding: 15px;
+            text-align: left;
+            width: 60%;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 8px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        button[type="submit"] {
+            background-color: #00cc00;
+            color: #1a1a1a;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        button[type="reset"] {
+            background-color: #cc0000;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        .footer {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 1rem;
+            text-align: right;
+            border-top: 2px solid #ffd700;
+        }
+        ::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        label {
+            color: #ffd700;
+        }
+        select option {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+        }
+        .required-star {
+            color: red;
+            margin-left: 3px;
+        }
+        select {
+            min-width: 100px;
+            padding: 12px !important;
+        }
+        .dob-group {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+        .dob-group select {
+            flex: 1;
+            width: 33%;
+        }
+        @media (max-width: 600px) {
+            .dob-group {
+                flex-direction: column;
+            }   
+            .dob-group select {
+                width: 100%;
+            }
+        }
+        .radio-group {
+            display: flex;
+            gap: 2rem;
+        }
+        .radio-label,.checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        input[type="radio"],input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            accent-color: #ffd700;
+        }
+        .checkbox-label {
+            margin-left: -4px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="signup">
+        <p>Registration</p>
+        <div class="box">
+            <form action="#" method="post" id="signupForm">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="firstName">First Name<span class="required-star">*</span></label>
+                        </th>
+                        <td >
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter First Name" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="lastName">Last Name<span class="required-star">*</span></label>
+                        </th>
+                        <td >
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date of Birth</th>
+                        <td>
+                            <div style="display: flex; gap: 10px; justify-content: space-between">
+                                <select name="date" required style="flex: 1">
+                                    <option value="">Date</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                                <select name="month" required style="flex: 1">
+                                    <option value="">Month</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                </select>
+                                <select name="year" required style="flex: 1">
+                                    <option value="">Year</option>
+                                    <option value="1990">1990</option>
+                                    <option value="1991">1991</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="gender">Gender</label>
+                        </th>
+                        <td>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" id="male" name="gender" value="male">
+                                    Male
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" id="female" name="gender" value="female">
+                                    Female
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="country">Country<span class="required-star">*</span></label>
+                        </th>
+                        <td>
+                            <select id="country" name="country" required>
+                                <option value="">Country</option>
+                                <option value="India">India</option>
+                                <option value="Pakistan">Pakistan</option>
+                                <option value="USA">USA</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="email">E-mail<span class="required-star">*</span></label>
+                        </th>
+                        <td >
+                            <input type="email" id="email" name="email" placeholder="Enter E-mail" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="phone">Phone<span class="required-star">*</span></label>
+                        </th>
+                        <td >
+                            <input type="tel" id="phone" name="phone" placeholder="Enter Phone" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="password">Password<span class="required-star">*</span></label>
+                        </th>
+                        <td >
+                            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="confirmPassword">Confirm Password<span class="required-star">*</span></label>
+                        </th>
+                        <td >
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter Password" required>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                I Agree to the terms of use
+                            </label>
+                        </td>
+                    </tr>
+                </table>
+                <div class="footer">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            let isValid = true;
+            const errorStyle = '2px solid red';
+            document.querySelectorAll('input, select').forEach(el => {
+                el.style.border = '';
+            });
+            const requiredFields = ['firstName', 'lastName', 'country', 'email', 'phone', 'password', 'confirmPassword'];
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.style.border = errorStyle;
+                    isValid = false;
+                }
+            });
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirmPassword');
+            if (password.value !== confirmPassword.value) {
+                password.style.border = errorStyle;
+                confirmPassword.style.border = errorStyle;
+                alert('Passwords do not match!');
+                isValid = false;
+            }
+            if (!document.getElementById('terms').checked) {
+                alert('You must agree to the terms!');
+                isValid = false;
+            }
+            if (!isValid) {
+                e.preventDefault();
+                return;
+            }
+            alert('Sign-up successful!');
+            window.location.href = 'Play.html'; 
+        });
+    </script>
+</body>
+</html>

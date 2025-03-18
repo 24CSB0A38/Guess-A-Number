@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            overflow: auto;
+            background: #1a1a1a;
+            background-image: url('https://www.shutterstock.com/image-vector/3d-podium-black-gold-frame-600nw-2345436199.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin: 2rem 0;
+            font-size: 3em;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .navbar {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar a:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        .coins {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 1.2rem;
+            background: rgba(255, 215, 0, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #ffd700;
+        }
+        .help-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            width: 80%;
+            max-width: 800px;
+            margin: 2rem 0;
+        }
+        .help-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        .help-section h2 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.5em;
+        }
+        .help-section p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .help-section ul {
+            padding-left: 2rem;
+            list-style-type: none;
+        }
+        .help-section li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        .help-section li::before {
+            content: "•";
+            color: #ffd700;
+            margin-right: 0.5rem;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                gap: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .help-container {
+                width: 90%;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Game Help</h1>
+    <nav class="navbar">
+        <a href="Login.html">Login</a>
+        <a href="Registration.html">Register</a>
+        <a href="Play.html">Play</a>
+        <a href="About.html">About</a>
+        <a href="Help.html" style="border-bottom: 2px solid #ffd700;">Help</a>
+    </nav>
+    <div class="coins">Coins: <span id="coins">100</span></div>
+    <div class="help-container">
+        <div class="help-section">
+            <h2>How to Play</h2>
+            <p>Welcome to the Lucky Number Game! Here's how to play:</p>
+            <ul>
+                <li>Choose a number between 0-9 from the number grid</li>
+                <li>Select your bet amount (10-100 coins)</li>
+                <li>If the random number matches your choice, you win!</li>
+                <li>Payout multipliers vary based on the number selected</li>
+            </ul>
+        </div>
+        <div class="help-section">
+            <h2>Game Rules</h2>
+            <ul>
+                <li>Minimum bet: 10 coins</li>
+                <li>Maximum bet: 100 coins</li>
+                <li>Numbers have different multipliers (shown below each number)</li>
+                <li>You start with 100 coins</li>
+                <li>If you run out of coins, you need to login/register</li>
+            </ul>
+        </div>
+        <div class="help-section">
+            <h2>Payout Multipliers</h2>
+            <p>Each number has different payout rates:</p>
+            <ul>
+                <li>0: x10</li>
+                <li>1: x6</li>
+                <li>2: x5.5</li>
+                <li>3: x5</li>
+                <li>4: x4.5</li>
+                <li>5: x4</li>
+                <li>6: x3.5</li>
+                <li>7: x3</li>
+                <li>8: x2.5</li>
+                <li>9: x2</li>
+            </ul>
+        </div>
+        <div class="help-section">
+            <h2>FAQ</h2>
+            <ul>
+                <li><strong>Q: How is the random number generated?</strong><br>
+                    A: Using a secure mathematical random algorithm</li>
+                <li><strong>Q: Can I play without registering?</strong><br>
+                    A: Yes, but you can't recover coins if you run out</li>
+                <li><strong>Q: Is this game fair?</strong><br>
+                    A: Absolutely! All results are completely random</li>
+                <li><strong>Q: How do I get more coins?</strong><br>
+                    A: Register/login to receive daily bonuses</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

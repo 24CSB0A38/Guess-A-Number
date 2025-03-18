@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            overflow: auto;
+            background: #1a1a1a;
+            background-image: url('https://e0.pxfuel.com/wallpapers/592/399/desktop-wallpaper-dark-money-money-black.jpg');
+            background-size: cover;
+            background-position: center;
+            color: rgb(255, 251, 0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin: 2rem 0;
+            font-size: 3em;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .navbar {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .navbar a:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        .coins {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            font-size: 1.2rem;
+            background: rgba(255, 215, 0, 0.2);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid #ffd700;
+        }
+        .number-display {
+        font-size: 8rem;
+        margin: 2rem 0;
+        color: #ffd700;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid #ffd700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        background: rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        }
+        .number-table {
+            border-collapse: separate;
+            border-spacing: 15px;
+            margin: 1rem 0;
+        }
+        .number-table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+        }
+        .number-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(246, 255, 0, 0.837);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .number-btn:hover {
+            background: #ffd700;
+            color: #1a1a1a;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        .multiplier {
+            color: #00ff00;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        .bet-section {
+            display: none;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        .bet-section button {
+            padding: 0.8rem 1.5rem;
+            background: #ffd700;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            font-weight: bold;
+        }
+        .registration {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            z-index: 200;
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                gap: 1rem;
+            }
+            .number-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .number-display {
+            width: 150px;
+            height: 150px;
+            font-size: 6rem;
+            }
+        }
+        .insufficient-coins {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            z-index: 200;
+        }
+        .insufficient-coins button {
+            margin-top: 1rem;
+            padding: 0.5rem 2rem;
+            background: #ffd700;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .insufficient-coins button:hover {
+            background: #ffaa00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess the Number</h1>
+    <nav class="navbar">
+        <a href="Login.html">Login</a>
+        <a href="Registration.html">Register</a>
+        <a href="Play.html">Play</a>
+        <a href="About.html">About</a>
+        <a href="Help.html">Help</a>
+    </nav>
+    <div class="coins">Coins: <span id="coins">100</span></div>
+    <div class="number-display" id="result">?</div>
+    <table class="number-table">
+        <tr>
+            <td>
+                <button class="number-btn" onclick="selectNumber(0)">0</button>
+                <div class="multiplier">x10</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(1)">1</button>
+                <div class="multiplier">x6</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(2)">2</button>
+                <div class="multiplier">x5.5</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(3)">3</button>
+                <div class="multiplier">x5</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(4)">4</button>
+                <div class="multiplier">x4.5</div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="number-btn" onclick="selectNumber(5)">5</button>
+                <div class="multiplier">x4</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(6)">6</button>
+                <div class="multiplier">x3.5</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(7)">7</button>
+                <div class="multiplier">x3</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(8)">8</button>
+                <div class="multiplier">x2.5</div>
+            </td>
+            <td>
+                <button class="number-btn" onclick="selectNumber(9)">9</button>
+                <div class="multiplier">x2</div>
+            </td>
+        </tr>
+    </table>
+    <div class="bet-section" id="bet-section"></div>
+    <div class="registration" id="registration">
+        <h2>You're out of coins! 💸</h2>
+        <p>Login to get more coins</p>
+        <p>Click here to <a href="Login.html">Login</a></p>
+        <p>Don't have an account? Click here to <a href="Registration.html">Register</a></p>
+    </div>
+    <div class="insufficient-coins" id="insufficientCoins">
+        <h2>Insufficient Coins! 💸</h2>
+        <p>You have only <span id="current-coins">100</span> coins.<br>Login to get more!</p>
+        <p>Click here to <a href="Login.html">Login</a></p>
+        <p>Don't have an account? Click here to <a href="Registration.html">Register</a></p>
+        <button onclick="closeInsufficientModal()">OK</button>
+    </div>
+    <script>
+        let coins = 100;
+        const multipliers = [10, 6, 5.5, 5, 4.5, 4, 3.5, 3, 2.5, 2];
+        const numberDisplay = document.getElementById('result');
+        const coinsDisplay = document.getElementById('coins');
+        const registration = document.getElementById('registration');
+        const betSection = document.getElementById('bet-section');
+        const insufficientCoinsModal = document.getElementById('insufficientCoins');
+        const currentCoinsSpan = document.getElementById('current-coins');
+        function selectNumber(selectedNumber) {
+            betSection.innerHTML = '';
+            betSection.style.display = 'flex';  
+            for (let bet = 10; bet <= 100; bet += 10) {
+                const betButton = document.createElement('button');
+                betButton.textContent = bet;
+                betButton.onclick = function() {
+                    playGame(selectedNumber, bet);
+                    betSection.style.display = 'none';
+                };
+                betSection.appendChild(betButton);
+            }
+            betSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        function playGame(selectedNumber, bet) {
+            if (coins < bet) {
+                currentCoinsSpan.textContent = coins;
+                insufficientCoinsModal.style.display = 'block';
+                return;
+            }
+            coins -= bet;
+            coinsDisplay.textContent = coins;
+            const randomNumber = Math.floor(Math.random() * 10);
+            numberDisplay.textContent = randomNumber;    
+            if (selectedNumber === randomNumber) {
+                coins += Math.floor(bet * multipliers[selectedNumber]);
+                coinsDisplay.textContent = coins;
+            }
+            if (coins <= 0) {
+                registration.style.display = 'block';
+            }
+            setTimeout(() => {
+                numberDisplay.textContent = '?';
+            }, 1000);
+        }
+        function closeInsufficientModal() {
+            insufficientCoinsModal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
